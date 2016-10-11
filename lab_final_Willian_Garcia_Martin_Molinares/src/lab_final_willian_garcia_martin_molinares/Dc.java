@@ -1,12 +1,16 @@
 package lab_final_willian_garcia_martin_molinares;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 public class Dc extends javax.swing.JFrame {
+
     public Dc() {
         initComponents();
     }
-@SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -16,6 +20,7 @@ public class Dc extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Bei = new javax.swing.JRadioButton();
         Bie = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,26 +37,29 @@ public class Dc extends javax.swing.JFrame {
         buttonGroup1.add(Bie);
         Bie.setText("Ie");
 
+        jButton2.setText("Añadir");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(Bie)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(Bei)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Bie)
-                        .addGap(124, 124, 124))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Bei)
+                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(107, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,42 +70,92 @@ public class Dc extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bie)
                     .addComponent(Bei))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(111, 111, 111))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static String[] E = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato"};
+    public static String[] I = {"sky", "hello", "world", "red", "phone", "shoe"};
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String p=txt1.getText();
-        if(Bie.isSelected()==true){
-            for (int i = 0; i < ma ; i++) {
-                
+        //int lim;
+        //JOptionPane.showConfirmDialog(rootPane, sc);
+        Scanner sc = new Scanner(System.in);
+        String po = (txt1.getText()).toLowerCase();
+        po=po.replaceAll(" ", "");
+        String[][] words=new String[4][2];
+        words[0][0]=""+(-10);
+        words[0][1]="";
+        words[1][0]=""+(-10);
+        words[1][1]="";
+        words[2][0]=""+(-10);
+        words[2][1]="";
+        words[3][0]=""+(-10);
+        words[3][1]="";
+        if(po.equals("")){
+            System.out.println("No ha ingresado nada");
+        }
+        StringTokenizer st = new StringTokenizer(po,",");
+        int x,j=0;
+        while(st.hasMoreTokens()){
+            String p=st.nextToken();
+        if (Bie.isSelected() == true) {
+            x=buscar(p,I);
+            System.out.println(x);
+            if(x!=-1){
+                System.out.println(E[x]);
+                words[j][1]=E[x];
+                words[j][0]=""+0;
+            }else{
+                System.out.println("No existe");
             }
-        }else if( Bei.isSelected()==true){
-            for (int i = 0; i <EI. ; i++) {
-                
+        } else if (Bei.isSelected() == true) {
+            x=buscar(p,E);
+            if(x!=-1){
+                System.out.println(I[x]);
+                words[j][1]=I[x];
+                words[j][0]=""+0;
+            }else{
+                System.out.println("No existe");
             }
         }
+        j++;
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ }
+    public static int buscar(String palabra,String m[]){
+     int i=0;
+     while (i < m.length) {
+                   if (palabra.equals(m[i])) {
+                    return i;
+                }
+                i++;
+            }
+     return -1;
+    }
 
     public static void main(String args[]) {
-                /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
@@ -121,38 +179,12 @@ public class Dc extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        Scanner sc=new Scanner(System.in);
-        public static String[][] EI=new String[100][2];
-             EI[0][0]="hola";
-             EI[0][1]="hello";
-             EI[1][0]="mundo";
-             EI[1][1]="world";
-             EI[2][0]="zapato";
-             EI[2][1]="shoe";
-             EI[3][0]="cielo";
-             EI[3][1]="sky";
-             EI[4][0]="rojo";
-             EI[4][1]="red";
-             EI[5][0]="telefono";
-             EI[5][1]="phone";
-    public String[][] IE=new String[100][2];
-             IE[0][1]="hola";
-             IE[0][0]="hello";
-             IE[1][1]="mundo";
-             IE[1][0]="world";
-             IE[2][1]="zapato";
-             IE[2][0]="shoe";
-             IE[3][1]="cielo";
-             IE[3][0]="sky";
-             IE[4][1]="rojo";
-             IE[4][0]="red";
-             IE[5][1]="telefono";
-             IE[5][0]="phone";
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dc().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -160,6 +192,7 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JRadioButton Bie;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
