@@ -2,7 +2,6 @@ package lab_final_willian_garcia_martin_molinares;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import javax.swing.JOptionPane;
 
 public class Dc extends javax.swing.JFrame {
 
@@ -44,10 +43,6 @@ public class Dc extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(Bie)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -56,17 +51,24 @@ public class Dc extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Bei)
-                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(107, Short.MAX_VALUE))))
+                        .addComponent(Bei)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(Bie))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(74, 74, 74)
                 .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bie)
                     .addComponent(Bei))
@@ -74,7 +76,7 @@ public class Dc extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,76 +84,107 @@ public class Dc extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public static String[] E = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato"};
-    public static String[] I = {"sky", "hello", "world", "red", "phone", "shoe"};
-
+    public static String[] EE = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato"};
+    public static String[] IE = {"sky", "hello", "world", "red", "phone", "shoe"};
+    public static String[] II = {"hello", "phone", "red", "shoe", "sky", "world"};
+    public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo", "mundo"};
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //int lim;
         //JOptionPane.showConfirmDialog(rootPane, sc);
         Scanner sc = new Scanner(System.in);
         String po = (txt1.getText()).toLowerCase();
-        po=po.replaceAll(" ", "");
-        String[][] words=new String[4][2];
-        words[0][0]=""+(-10);
-        words[0][1]="";
-        words[1][0]=""+(-10);
-        words[1][1]="";
-        words[2][0]=""+(-10);
-        words[2][1]="";
-        words[3][0]=""+(-10);
-        words[3][1]="";
-        if(po.equals("")){
-            System.out.println("No ha ingresado nada");
-        }
-        StringTokenizer st = new StringTokenizer(po,",");
-        int x,j=0;
-        while(st.hasMoreTokens()){
-            String p=st.nextToken();
-        if (Bie.isSelected() == true) {
-            x=buscar(p,I);
-            System.out.println(x);
-            if(x!=-1){
-                System.out.println(E[x]);
-                words[j][1]=E[x];
-                words[j][0]=""+0;
-            }else{
-                System.out.println("No existe");
-            }
-        } else if (Bei.isSelected() == true) {
-            x=buscar(p,E);
-            if(x!=-1){
-                System.out.println(I[x]);
-                words[j][1]=I[x];
-                words[j][0]=""+0;
-            }else{
-                System.out.println("No existe");
-            }
-        }
-        j++;
-    }//GEN-LAST:event_jButton1ActionPerformed
- }
-    public static int buscar(String palabra,String m[]){
-     int i=0;
-     while (i < m.length) {
-                   if (palabra.equals(m[i])) {
-                    return i;
+        po = po.replaceAll(" ", "");
+        StringTokenizer st = new StringTokenizer(po, ",");
+        int x, j = 0;
+        String tr = "";
+        while (st.hasMoreTokens()) {
+            String p = st.nextToken();
+            if (!(p.equals(""))) {
+                if (Bie.isSelected() == true) {
+                    tr = tr + traduce_to_Ingles(p) + ",";
+                }else if (Bei.isSelected() == true) {
+                    tr = tr + traduce_to_Español(p) + ",";
                 }
-                i++;
+                j++;
             }
-     return -1;
+    }//GEN-LAST:event_jButton1ActionPerformed
+        if (j <= 4 && !(tr.equals(""))) {
+            tr = tr.substring(0, tr.length() - 1);
+            System.out.println(tr);
+        } else if (po.equals("")) {
+            System.out.println("No ha ingresado nada");
+        } else {
+            System.out.println("Excedio el numero de palabras");
+        }
+    }
+
+    public static void añadirEE(String p) {
+        int x = buscar(p, EE);
+        if (x == -1) {
+            posicion(p, EE);
+            for (int i = EE.length; i > x; i--) {   
+                EE[i]=EE[i-1];
+                EI[i]=EI[i-1];
+            }
+            EE[x]=p;
+        } else {
+            System.out.println("La palabra ya existe");
+        }
+    }
+
+    public static int posicion(String p, String a[]) {
+        int x = a.length;
+        while (x >= 0) {
+            if(p.compareTo(a[x])<0)
+                return x;
+            x--;
+        }
+        return a.length;
+    }
+
+    public static String traduce_to_Ingles(String p) {
+        int x = buscar(p, II);
+        if (x != -1) {
+            return EI[x];
+        } else {
+            return "No tenemos la traduccion";
+        }
+    }
+
+    public static String traduce_to_Español(String p) {
+        int x = buscar(p, EE);
+        if (x != -1) {
+            return IE[x];
+        } else {
+            return "No tenemos la traduccion";
+        }
+    }
+
+    public static int buscar(String palabra, String m[]) {
+        int i = 0;
+        while (i < m.length) {
+            if (palabra.equals(m[i])) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
     }
 
     public static void main(String args[]) {
