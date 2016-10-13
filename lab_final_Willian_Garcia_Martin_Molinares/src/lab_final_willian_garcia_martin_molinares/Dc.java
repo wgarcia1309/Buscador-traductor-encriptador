@@ -157,9 +157,15 @@ public class Dc extends javax.swing.JFrame {
         pi=sc.nextLine();
         if(buscar(pe,EE)==-1){
         añadirEE(pe,pi);
+        añadirII(pe,pi);
         for (int i = 0; i < EE.length; i++) {
               if(!(EE[i].equals("")) && !(IE[i].equals(""))){
                 System.out.println(EE[i]+" "+IE[i]);
+              }
+        }
+        for (int i = 0; i < IE.length; i++) {
+              if(!(IE[i].equals("")) && !(II[i].equals(""))){
+                System.out.println(EI[i]+" "+II[i]);
               }
         }
      }
@@ -194,19 +200,18 @@ public static void delete(String p) {
                 EI[i]=EI[i+1];
                 II[i]=II[i+1];
             }
-}
+}                                  //PE   //PI
     public static void añadirII(String p,String p1) {
-            int x=posicion(p, II);
+            int x=posicion(p1, II);
             for (int i = EI.length-1; i > x; i--) {   
                 EI[i]=EI[i-1];
                 II[i]=II[i-1];
             }
-            EI[x]=p1;
-            II[x]=p;
+            EI[x]=p;
+            II[x]=p1;
     }
     public static void añadirEE(String p,String p1) {
             int x=posicion(p, EE);
-            System.out.println(x);
             for (int i = EE.length-1; i > x; i--) {   
                 EE[i]=EE[i-1];
                 IE[i]=IE[i-1];
