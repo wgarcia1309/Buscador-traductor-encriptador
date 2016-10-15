@@ -8,7 +8,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class Dc extends javax.swing.JFrame {
 
     public Dc() {
@@ -16,12 +15,12 @@ public class Dc extends javax.swing.JFrame {
         setTitle("DICCIONARIO");
         setLocationRelativeTo(null);
         setResizable(false);
-        ((JPanel)getContentPane()).setOpaque(false); 
-        ImageIcon uno=new ImageIcon(this.getClass().getResource("/imagenes/fondo3.jpg")); 
-        JLabel fondo= new JLabel(); 
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/imagenes/fondo3.jpg"));
+        JLabel fondo = new JLabel();
         fondo.setIcon(uno);
-        getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
-        fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +37,7 @@ public class Dc extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         fondo2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,27 +78,37 @@ public class Dc extends javax.swing.JFrame {
 
         fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diccionario-para-celular.gif"))); // NOI18N
 
+        jButton4.setText("Mostrar palabras");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Bei)
-                            .addComponent(Bie))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(88, 88, 88)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Bei)
+                                    .addComponent(Bie))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addComponent(fondo2)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,18 +119,16 @@ public class Dc extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Bei))
+                        .addComponent(Bei)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Bie))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fondo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(fondo2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -132,13 +140,13 @@ public class Dc extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -149,7 +157,7 @@ public class Dc extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(385, 385, 385))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,16 +166,14 @@ public class Dc extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static String[] EE = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-    public static String[] IE = {"sky", "hello", "world", "red", "phone", "shoe","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-    public static String[] II = {"hello", "phone", "red", "shoe", "sky", "world","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-    public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo","mundo","","","", "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+    public static String[] EE = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    public static String[] IE = {"sky", "hello", "world", "red", "phone", "shoe", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    public static String[] II = {"hello", "phone", "red", "shoe", "sky", "world", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo", "mundo", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    public static int act = 6;
 
-    
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //int lim;
-        //JOptionPane.showConfirmDialog(rootPane, sc);
         Scanner sc = new Scanner(System.in);
         String po = (txt1.getText()).toLowerCase();
         po = po.replaceAll(" ", "");
@@ -179,98 +185,85 @@ public class Dc extends javax.swing.JFrame {
             if (!(p.equals(""))) {
                 if (Bie.isSelected() == true) {
                     tr = tr + traduce_to_Ingles(p) + ",";
-                }else if (Bei.isSelected() == true) {
+                } else if (Bei.isSelected() == true) {
                     tr = tr + traduce_to_Español(p) + ",";
                 }
                 j++;
             }
-             if (j <= 4 && !(tr.equals(""))) {
-            tr = tr.substring(0, tr.length() - 1);
-            System.out.println(tr);
-        } else if (po.equals("")) {
-            System.out.println("No ha ingresado nada");
-        } else {
-            System.out.println("Excedio el numero de palabras");
+            if (j <= 4 && !(tr.equals(""))) {
+                tr = tr.substring(0, tr.length() - 1);
+                System.out.println(tr);
+            } else if (po.equals("")) {
+                System.out.println("No ha ingresado nada");
+            } else {
+                System.out.println("Excedio el numero de palabras");
+            }
         }
-      }   
     }//GEN-LAST:event_jButton1ActionPerformed
 //añadir
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String pe,pi;
-        Scanner sc =new Scanner(System.in);
-        pe=sc.nextLine();
-        pi=sc.nextLine();
-        if(buscar(pe,EE)==-1){
-        añadirEE(pe,pi);
-        añadirII(pe,pi);
-        for (int i = 0; i < EE.length; i++) {
-              if(!(EE[i].equals("")) && !(IE[i].equals(""))){
-                System.out.println(EE[i]+" "+IE[i]);
-              }
-        }
-        for (int i = 0; i < IE.length; i++) {
-              if(!(IE[i].equals("")) && !(II[i].equals(""))){
-                System.out.println(EI[i]+" "+II[i]);
-              }
-        }
         
-     }
+        if (act < Inicio.w) {
+            Formulario_add v3 =new Formulario_add();
+            v3.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error Se ha alcanzado el limite maximo");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String del;
-        Scanner sc =new Scanner(System.in);
-        del=sc.nextLine();
-        if(buscar(del,EE)!=-1){
-            delete(del);
-            for (int i = 0; i < EE.length; i++) {
-                  if(!(EE[i].equals("")) && !(IE[i].equals(""))){
-                    System.out.println(EE[i]+", "+IE[i]);
-                  }
-            }
-            for (int i = 0; i < EE.length; i++) {
-                  if(!(EE[i].equals("")) && !(IE[i].equals(""))){
-                    System.out.println(II[i]+", "+EI[i]);
-                  }
-            }
-        }else{
-            System.out.println("La palabra no se encuentra");
-        }  
+        if (act != 0) {
+            Formulario_del v4 =new Formulario_del();
+            v4.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "El Diccionario esta vacio");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
-public static void delete(String p) {
-            for (int i = buscar(p,EE); i < EE.length-1; i++) {
-                EE[i]=EE[i+1];
-                IE[i]=IE[i+1];
-            }
-            for (int i = buscar(p,EI); i < EI.length-1; i++) {
-                EI[i]=EI[i+1];
-                II[i]=II[i+1];
-            }
-}                                  //PE   //PI
-    public static void añadirII(String p,String p1) {
-            int x=posicion(p1, II);
-            for (int i = EI.length-1; i > x; i--) {   
-                EI[i]=EI[i-1];
-                II[i]=II[i-1];
-            }
-            EI[x]=p;
-            II[x]=p1;
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+     Biblioteca v5 =new Biblioteca();
+     v5.setVisible(true);
+     this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+    public static void delete(String p) {
+        for (int i = buscar(p, EE); i < EE.length - 1; i++) {
+            EE[i] = EE[i + 1];
+            IE[i] = IE[i + 1];
+        }
+        for (int i = buscar(p, EI); i < EI.length - 1; i++) {
+            EI[i] = EI[i + 1];
+            II[i] = II[i + 1];
+        }
+    }                                  //PE   //PI
+
+    public static void añadirII(String p, String p1) {
+        int x = posicion(p1, II);
+        for (int i = EI.length - 1; i > x; i--) {
+            EI[i] = EI[i - 1];
+            II[i] = II[i - 1];
+        }
+        EI[x] = p;
+        II[x] = p1;
     }
-    public static void añadirEE(String p,String p1) {
-            int x=posicion(p, EE);
-            for (int i = EE.length-1; i > x; i--) {   
-                EE[i]=EE[i-1];
-                IE[i]=IE[i-1];
-            }
-            EE[x]=p;
-            IE[x]=p1;
+
+    public static void añadirEE(String p, String p1) {
+        int x = posicion(p, EE);
+        for (int i = EE.length - 1; i > x; i--) {
+            EE[i] = EE[i - 1];
+            IE[i] = IE[i - 1];
+        }
+        EE[x] = p;
+        IE[x] = p1;
     }
 
     public static int posicion(String p, String a[]) {
         int x = 0;
         while (x < a.length) {
-            if(p.compareTo(a[x])<0 || a[x].equals(""))
+            if (p.compareTo(a[x]) < 0 || a[x].equals("")) {
                 return x;
+            }
             x++;
         }
         return a.length;
@@ -346,6 +339,7 @@ public static void delete(String p) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;

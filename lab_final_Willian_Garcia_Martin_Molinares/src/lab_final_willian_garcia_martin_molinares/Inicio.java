@@ -90,12 +90,12 @@ public class Inicio extends javax.swing.JFrame {
         
         if (isNumeric(h)==true){
             w=Integer.parseInt(h);
-            if(w>100 || w<=0){
+            if(w>100 || w<6){
                 JOptionPane.showMessageDialog(null, "Vuelva a digitar el numero de palabras");
             }else{
                 Dc v1 =new Dc();
                 v1.setVisible(true);
-                this.hide();
+                this.setVisible(false);
             }
         }else{
             System.out.println("okay x2");
