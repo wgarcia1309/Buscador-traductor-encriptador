@@ -6,6 +6,7 @@
 package lab_final_willian_garcia_martin_molinares;
 
 import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 import static lab_final_willian_garcia_martin_molinares.Dc.EE;
 import static lab_final_willian_garcia_martin_molinares.Dc.EI;
 import static lab_final_willian_garcia_martin_molinares.Dc.IE;
@@ -63,66 +64,66 @@ public class Formulario_add extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(Agregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Agregar)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton1)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(48, 48, 48)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(37, 37, 37)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Agregar)
                     .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public static String p1,p2;
+public static String p1, p2;
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        p1=(jTextField1.getText()).toLowerCase();
-        p2=(jTextField2.getText()).toLowerCase();
-         Dc v1 =new Dc();
-         v1.setVisible(true);
-        this.setVisible(false);
-          if (buscar(p1, EE) == -1) {
-                añadirEE(p1, p2);
-                añadirII(p1, p2);
-                for (int i = 0; i < EE.length; i++) {
-                    if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                        System.out.println(EE[i] + " " + IE[i]);
-                    }
-                }
-                for (int i = 0; i < IE.length; i++) {
-                    if (!(IE[i].equals("")) && !(II[i].equals(""))) {
-                        System.out.println(EI[i] + " " + II[i]);
-                    }
-                }
+        p1 = (jTextField1.getText()).toLowerCase();
+        p2 = (jTextField2.getText()).toLowerCase();
+        StringTokenizer vr1 = new StringTokenizer(p1, " ");
+        StringTokenizer vr2 = new StringTokenizer(p2, " ");
+        //Expesiones regulares
+        if (vr1.countTokens() == 1 && vr2.countTokens() == 1 && !(p1.contains("1")) && !(p1.contains("2"))&& !(p1.contains("3")) && !(p1.contains("4")) && !(p1.contains("5")) && !(p1.contains("5")) && !(p1.contains("5")) && !(p1.contains("6"))&& !(p1.contains("7")) && !(p1.contains("8")) && !(p1.contains("9")) && !(p1.contains("0")) && !(p2.contains("1")) &&  !(p2.contains("2")) && !(p2.contains("3")) && !(p2.contains("4")) && !(p2.contains("5")) && !(p2.contains("6")) && !(p2.contains("7")) && !(p2.contains("8")) && !(p2.contains("9")) && !(p2.contains("0"))) {    
+            if (buscar(p1, EE) == -1) {
+               añadirEE(p1, p2);
+               añadirII(p1, p2);
+               JOptionPane.showMessageDialog(null, "Palabra añadida al diccionario");
             }
             act++;
+            Dc v1 = new Dc();
+            v1.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error entradas invalidas");
+        }
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Dc v1 =new Dc();
+        Dc v1 = new Dc();
         v1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
- public static boolean letras(String str) { 
-     return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
- }
+    public static boolean letras(String str) {
+        return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("") == false);
+    }
+
     /**
      * @param args the command line arguments
      */

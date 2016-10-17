@@ -1,6 +1,4 @@
 package lab_final_willian_garcia_martin_molinares;
-
-import java.util.Scanner;
 import java.util.StringTokenizer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -37,7 +35,6 @@ public class Dc extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         fondo2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,34 +75,24 @@ public class Dc extends javax.swing.JFrame {
 
         fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diccionario-para-celular.gif"))); // NOI18N
 
-        jButton4.setText("Mostrar palabras");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Bei)
-                                    .addComponent(Bie))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(83, 83, 83)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Bei)
+                            .addComponent(Bie))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(83, 83, 83)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addComponent(fondo2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -116,7 +103,7 @@ public class Dc extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,9 +111,7 @@ public class Dc extends javax.swing.JFrame {
                         .addComponent(Bei)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Bie))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(fondo2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
@@ -173,14 +158,14 @@ public class Dc extends javax.swing.JFrame {
     public static int act = 6;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //int lim;
-        Scanner sc = new Scanner(System.in);
+        if(!(Bie.isSelected())&& !(Bei.isSelected())){
+            JOptionPane.showMessageDialog(null, "Error Seleccione una opcion");
+        }else{
         String po = (txt1.getText()).toLowerCase();
         po = po.replaceAll(" ", "");
         StringTokenizer st = new StringTokenizer(po, ",");
-        int j = 0;
         String tr = "";
-        while (st.hasMoreTokens()) {
+        while (st.hasMoreTokens() && !(po.equals(""))) {
             String p = st.nextToken();
             if (!(p.equals(""))) {
                 if (Bie.isSelected() == true) {
@@ -188,23 +173,24 @@ public class Dc extends javax.swing.JFrame {
                 } else if (Bei.isSelected() == true) {
                     tr = tr + traduce_to_Español(p) + ",";
                 }
-                j++;
             }
-            if (j <= 4 && !(tr.equals(""))) {
-                tr = tr.substring(0, tr.length() - 1);
-                System.out.println(tr);
-            } else if (po.equals("")) {
-                System.out.println("No ha ingresado nada");
-            } else {
-                System.out.println("Excedio el numero de palabras");
-            }
+        }
+        po = (txt1.getText()).toLowerCase();
+        po = po.replaceAll(" ", "");
+        StringTokenizer vr = new StringTokenizer(po, ",");
+        if (po.equals("")) {
+            JOptionPane.showMessageDialog(null, "No ha ingresado nada");
+        } else if (vr.countTokens() > 4) {
+            JOptionPane.showMessageDialog(null, "Excedio el numero de palabras");
+        } else if (vr.countTokens() <= 4 && !(po.equals(""))) {
+            JOptionPane.showMessageDialog(null, tr.substring(0, tr.length() - 1));
+        }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 //añadir
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
         if (act < Inicio.w) {
-            Formulario_add v3 =new Formulario_add();
+            Formulario_add v3 = new Formulario_add();
             v3.setVisible(true);
             this.setVisible(false);
         } else {
@@ -214,20 +200,14 @@ public class Dc extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (act != 0) {
-            Formulario_del v4 =new Formulario_del();
+            Formulario_del v4 = new Formulario_del();
             v4.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "El Diccionario esta vacio");
+            JOptionPane.showMessageDialog(this, "El diccionario esta vacio");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     Biblioteca v5 =new Biblioteca();
-     v5.setVisible(true);
-     this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
-    public static void delete(String p) {
+    public static void deleteEE(String p) {
         for (int i = buscar(p, EE); i < EE.length - 1; i++) {
             EE[i] = EE[i + 1];
             IE[i] = IE[i + 1];
@@ -236,7 +216,17 @@ public class Dc extends javax.swing.JFrame {
             EI[i] = EI[i + 1];
             II[i] = II[i + 1];
         }
-    }                                  //PE   //PI
+    }    
+     public static void deleteII(String p) {
+        for (int i = buscar(p, IE); i < IE.length - 1; i++) {
+            EE[i] = EE[i + 1];
+            IE[i] = IE[i + 1];
+        }
+        for (int i = buscar(p, II); i < II.length - 1; i++) {
+            EI[i] = EI[i + 1];
+            II[i] = II[i + 1];
+        }
+    }    
 
     public static void añadirII(String p, String p1) {
         int x = posicion(p1, II);
@@ -287,7 +277,7 @@ public class Dc extends javax.swing.JFrame {
         }
     }
 
-    public static int buscar(String palabra, String m[]) {
+        public static int buscar(String palabra, String m[]) {
         int i = 0;
         while (i < m.length) {
             if (palabra.equals(m[i])) {
@@ -339,7 +329,6 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;

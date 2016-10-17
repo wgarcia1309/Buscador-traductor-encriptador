@@ -11,8 +11,10 @@ import static lab_final_willian_garcia_martin_molinares.Dc.EE;
 import static lab_final_willian_garcia_martin_molinares.Dc.EI;
 import static lab_final_willian_garcia_martin_molinares.Dc.IE;
 import static lab_final_willian_garcia_martin_molinares.Dc.II;
+import static lab_final_willian_garcia_martin_molinares.Dc.act;
 import static lab_final_willian_garcia_martin_molinares.Dc.buscar;
-import static lab_final_willian_garcia_martin_molinares.Dc.delete;
+import static lab_final_willian_garcia_martin_molinares.Dc.deleteEE;
+import static lab_final_willian_garcia_martin_molinares.Dc.deleteII;
 
 /**
  *
@@ -39,8 +41,8 @@ public class Formulario_del extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         Delete = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        EBE = new javax.swing.JRadioButton();
+        EBI = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,11 +54,11 @@ public class Formulario_del extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Eliminar Buscando Español");
+        buttonGroup1.add(EBE);
+        EBE.setText("Eliminar Buscando Español");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Eliminar Buscando Ingles");
+        buttonGroup1.add(EBI);
+        EBI.setText("Eliminar Buscando Ingles");
 
         jButton1.setText("Vover");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,8 +82,8 @@ public class Formulario_del extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
+                    .addComponent(EBE)
+                    .addComponent(EBI)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jButton1)))
@@ -92,10 +94,10 @@ public class Formulario_del extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
+                    .addComponent(EBE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(EBI)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Delete)
@@ -107,31 +109,52 @@ public class Formulario_del extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        String del;
+        if (!(EBE.isSelected()) && !(EBI.isSelected())) {
+            JOptionPane.showMessageDialog(this, "Seleccione una opcion");
+        } else {
+            String del;
             del = jTextField1.getText();
-            if (buscar(del, EE) != -1) {
-                delete(del);
-                for (int i = 0; i < EE.length; i++) {
-                    if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                        System.out.println(EE[i] + ", " + IE[i]);
+            if (buscar(del, EE) != -1  || (buscar(del, II))!=-1) {
+                if (EBE.isSelected()) {
+                    deleteEE(del);
+                    for (int i = 0; i < EE.length; i++) {
+                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
+                            System.out.println(EE[i] + ", " + IE[i]);
+                        }
+                    }
+                    System.out.println("");
+                    for (int i = 0; i < II.length; i++) {
+                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
+                            System.out.println(II[i] + ", " + EI[i]);
+                        }
+                    }
+                } else {
+                    deleteII(del);
+                    for (int i = 0; i < EE.length; i++) {
+                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
+                            System.out.println(EE[i] + ", " + IE[i]);
+                        }
+                    }
+                    System.out.println("");
+                    for (int i = 0; i < II.length; i++) {
+                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
+                            System.out.println(II[i] + ", " + EI[i]);
+                        }
                     }
                 }
-                for (int i = 0; i < EE.length; i++) {
-                    if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                        System.out.println(II[i] + ", " + EI[i]);
-                    }
-                }
-                Dc v1 =new Dc();
+                act--;
+                Dc v1 = new Dc();
                 v1.setVisible(true);
                 this.setVisible(false);
             } else {
-                JOptionPane.showMessageDialog(this,"La palabra no se encuentra");
+                JOptionPane.showMessageDialog(this, "La palabra no se encuentra");
             }
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         Dc v1 =new Dc();
-         v1.setVisible(true);
+        Dc v1 = new Dc();
+        v1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -172,10 +195,10 @@ public class Formulario_del extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
+    private javax.swing.JRadioButton EBE;
+    private javax.swing.JRadioButton EBI;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

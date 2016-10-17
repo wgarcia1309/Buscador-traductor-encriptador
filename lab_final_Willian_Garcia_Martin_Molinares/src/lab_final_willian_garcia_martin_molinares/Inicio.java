@@ -47,7 +47,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setText("Digite el limite de palabras, tenga en cuenta que el maximo es de 100");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Tambien tenga en cuenta que el sistema tiene precargada 10 palabras");
+        jLabel2.setText("Tambien tenga en cuenta que el sistema tiene precargada 6 palabras");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,7 +66,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(tenviar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +91,7 @@ public class Inicio extends javax.swing.JFrame {
         if (isNumeric(h)==true){
             w=Integer.parseInt(h);
             if(w>100 || w<6){
-                JOptionPane.showMessageDialog(null, "Vuelva a digitar el numero de palabras");
+                JOptionPane.showMessageDialog(null, "Vuelva a digitar el numero de palabras rango entre [6,100]");
             }else{
                 Dc v1 =new Dc();
                 v1.setVisible(true);
@@ -104,9 +104,6 @@ public class Inicio extends javax.swing.JFrame {
      public static boolean isNumeric(String str) { 
          return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
      }
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
