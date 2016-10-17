@@ -105,8 +105,10 @@ public static String p1, p2;
                añadirEE(p1, p2);
                añadirII(p1, p2);
                JOptionPane.showMessageDialog(null, "Palabra añadida al diccionario");
+               act++;
+            }else{
+                JOptionPane.showMessageDialog(null, "Esta palabra ya se encuentra en el diccionario");
             }
-            act++;
             Dc v1 = new Dc();
             v1.setVisible(true);
             this.setVisible(false);

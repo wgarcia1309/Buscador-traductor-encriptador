@@ -114,33 +114,11 @@ public class Formulario_del extends javax.swing.JFrame {
         } else {
             String del;
             del = jTextField1.getText();
-            if (buscar(del, EE) != -1  || (buscar(del, II))!=-1) {
-                if (EBE.isSelected()) {
+            if (buscar(del, EE) != -1  || (buscar(del, II))!=-1) { 
+               if (EBE.isSelected()) {
                     deleteEE(del);
-                    for (int i = 0; i < EE.length; i++) {
-                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                            System.out.println(EE[i] + ", " + IE[i]);
-                        }
-                    }
-                    System.out.println("");
-                    for (int i = 0; i < II.length; i++) {
-                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                            System.out.println(II[i] + ", " + EI[i]);
-                        }
-                    }
                 } else {
-                    deleteII(del);
-                    for (int i = 0; i < EE.length; i++) {
-                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                            System.out.println(EE[i] + ", " + IE[i]);
-                        }
-                    }
-                    System.out.println("");
-                    for (int i = 0; i < II.length; i++) {
-                        if (!(EE[i].equals("")) && !(IE[i].equals(""))) {
-                            System.out.println(II[i] + ", " + EI[i]);
-                        }
-                    }
+                    deleteII(del);                    
                 }
                 act--;
                 Dc v1 = new Dc();
