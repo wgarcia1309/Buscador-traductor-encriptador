@@ -5,7 +5,9 @@
  */
 package lab_final_willian_garcia_martin_molinares;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -17,7 +19,11 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form AÑADIR
      */
     public Inicio() {
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.BusinessBlackSteelSkin");
+        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceCremeTheme");
         initComponents();
+        setLocationRelativeTo(null);
     }
     public static int w;
     /**
@@ -86,8 +92,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
-        String h=tenviar.getText();
-        
+        String h=tenviar.getText(); 
         if (isNumeric(h)==true){
             w=Integer.parseInt(h);
             if(w>100 || w<6){
@@ -98,7 +103,7 @@ public class Inicio extends javax.swing.JFrame {
                 this.setVisible(false);
             }
         }else{
-            System.out.println("okay x2");
+            JOptionPane.showMessageDialog(null,"Entrada invalida");
         }
     }//GEN-LAST:event_enviarActionPerformed
      public static boolean isNumeric(String str) { 

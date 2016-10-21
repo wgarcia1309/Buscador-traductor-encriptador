@@ -27,6 +27,7 @@ public class Formulario_del extends javax.swing.JFrame {
      */
     public Formulario_del() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -60,7 +61,7 @@ public class Formulario_del extends javax.swing.JFrame {
         buttonGroup1.add(EBI);
         EBI.setText("Eliminar Buscando Ingles");
 
-        jButton1.setText("Vover");
+        jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
