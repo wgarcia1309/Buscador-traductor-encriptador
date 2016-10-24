@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class Dc extends javax.swing.JFrame {
-    
+
     public Dc() {
         initComponents();
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -20,7 +20,7 @@ public class Dc extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +34,7 @@ public class Dc extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,27 +76,34 @@ public class Dc extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Desencriptar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Bei)
                             .addComponent(Bie))
                         .addGap(37, 37, 37)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,8 +122,10 @@ public class Dc extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,14 +135,14 @@ public class Dc extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -142,6 +152,7 @@ public class Dc extends javax.swing.JFrame {
     public static String[] II = {"hello", "phone", "red", "shoe", "sky", "world", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo", "mundo", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static int act = 6;
+    public static int x;
     public static char[] letras = new char[27];
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -174,7 +185,7 @@ public class Dc extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-//añadir
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (act < Inicio.w) {
             Formulario_add v3 = new Formulario_add();
@@ -233,10 +244,80 @@ public class Dc extends javax.swing.JFrame {
             } else if (vr.countTokens() <= 4 && !(po.equals(""))) {
                 if (!tr.equals("")) {
                     Encriptar(tr.substring(0, tr.length() - 1));
+                    System.out.println(tr.substring(0, tr.length() - 1));
                 }
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        x = 0;
+        String a="";
+        if (!(Bie.isSelected()) && !(Bei.isSelected())) {
+            JOptionPane.showMessageDialog(null, "Error seleccione una opcion");
+        } else {
+            String po = (txt1.getText()).toLowerCase();
+            po = po.replaceAll(" ", "");
+            if (!po.equals("")) {
+                StringTokenizer st = new StringTokenizer(po, ",");
+                String tr = "";
+                String clave;
+                do {
+                  clave = JOptionPane.showInputDialog(null, "Digite la clave");
+                } while (clave.equals("") || clave.equals(null));
+                clave = clave.toLowerCase();
+                
+                    while (st.hasMoreTokens() && !(po.equals(""))) {
+                        String p = st.nextToken();
+                        if (!(p.equals(""))) {
+                            if (Bie.isSelected() == true) 
+                                a += Desencriptar(p, clave, IE, EE, "i")+",";
+                             else if (Bei.isSelected() == true) 
+                                a += Desencriptar(p, clave, EI, II, "e")+",";
+                        }
+                    }
+                    a=a.substring(0, a.length()-1);
+                    if(a.contains("No tenemos la traduccion")) JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
+                    else JOptionPane.showMessageDialog(null, a);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error no ingreso nada");
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+    public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
+        int a = (int) 'a';
+        int d=psw.length();
+        for (int i = 0; i < letras.length; i++) {
+            if (i < 14) {
+                letras[i] = (char) (a + i);
+            } else if (i == 14) {
+                letras[i] = 'ñ';
+            } else {
+                letras[i] = (char) (a - 1 + i);
+            }
+        }
+        String palabra = "";
+        char p[] = s.toCharArray();
+        char cl[] = psw.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            if (x == d) x = 0;
+            int n = (posletra(p[i]) - posletra(cl[x]));
+            if (n >= 0) {
+                n = n % 27;
+            } else {
+                n = (n + 27) % 27;
+            }
+            palabra = palabra+letras[n];
+            x++;
+        }
+        int place=posicion(palabra,v);
+        if(place!=-1){
+             if (l.equals("e"))return traduce_to_Español(palabra);
+             else if (l.equals("i"))return traduce_to_Ingles(palabra);
+        }
+        return "";
+    }
+
     public static void deleteEE(String p) {
         for (int i = buscar(p, EE); i < EE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -247,8 +328,9 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
-    
+
     public static void Encriptar(String s) {
+        x=0;
         int a = (int) 'a';
         for (int i = 0; i < letras.length; i++) {
             if (i < 14) {
@@ -262,20 +344,24 @@ public class Dc extends javax.swing.JFrame {
         String clave = "";
         do {
             clave = JOptionPane.showInputDialog(null, "Digite la clave");
+            clave = clave.replaceAll(" ", "");
         } while (clave == null || clave.equals(""));
+        clave = clave.toLowerCase();
         if (clave.length() < s.length()) {
             clave = igclave(s, clave);
         }
         s = s.replaceAll(" ", "");
         char f1[], cl[];
         f1 = s.toCharArray();
-        cl = clave.toCharArray();       
+        cl = clave.toCharArray();
         for (int i = 0; i < s.length(); i++) {
             if (f1[i] == ',') {
-                f1[i] = cl[i];
+                f1[i] = ',';
             } else {
-                int n = (posletra(f1[i]) + posletra(cl[i])) % 27;
+                if(x==clave.length())x=0;
+                int n = (posletra(f1[i]) + posletra(cl[x])) % 27;
                 f1[i] = letras[n];
+                x++;
             }
         }
         String lol = "";
@@ -286,19 +372,19 @@ public class Dc extends javax.swing.JFrame {
     }
 
     public static String igclave(String w, String c) {
-            int cont = 0;
-            int p = c.length();
-            for (int i = p; i < w.length(); i++) {
-                if (cont == p) {
-                    cont = 0;
-                }
-                if (!w.substring(i,i+1).equals(',')) {
-                    c = c + "" + c.substring(cont, cont + 1);
-                    cont++;
-                } else {
-                    c = c + " " + c.substring(cont, cont + 1);
-                }
+        int cont = 0;
+        int p = c.length();
+        for (int i = p; i < w.length(); i++) {
+            if (cont == p) {
+                cont = 0;
             }
+            if (!w.substring(i, i + 1).equals(',')) {
+                c = c + "" + c.substring(cont, cont + 1);
+                cont++;
+            } else {
+                c = c + " " + c.substring(cont, cont + 1);
+            }
+        }
         return c;
     }
 
@@ -309,7 +395,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return i;
     }
-    
+
     public static void deleteII(String p) {
         for (int i = buscar(p, IE); i < IE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -320,56 +406,56 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
-    
+
     public static void añadirII(String p, String p1) {
-        int x = posicion(p1, II);
-        for (int i = EI.length - 1; i > x; i--) {
+        int x1 = posicion(p1, II);
+        for (int i = EI.length - 1; i > x1; i--) {
             EI[i] = EI[i - 1];
             II[i] = II[i - 1];
         }
-        EI[x] = p;
-        II[x] = p1;
+        EI[x1] = p;
+        II[x1] = p1;
     }
-    
+
     public static void añadirEE(String p, String p1) {
-        int x = posicion(p, EE);
-        for (int i = EE.length - 1; i > x; i--) {
+        int x1 = posicion(p, EE);
+        for (int i = EE.length - 1; i > x1; i--) {
             EE[i] = EE[i - 1];
             IE[i] = IE[i - 1];
         }
-        EE[x] = p;
-        IE[x] = p1;
+        EE[x1] = p;
+        IE[x1] = p1;
     }
-    
+
     public static int posicion(String p, String a[]) {
-        int x = 0;
-        while (x < a.length) {
-            if (p.compareTo(a[x]) < 0 || a[x].equals("")) {
-                return x;
+        int x1 = 0;
+        while (x1 < a.length) {
+            if (p.compareTo(a[x1]) < 0 || a[x1].equals("")) {
+                return x1;
             }
-            x++;
+            x1++;
         }
         return a.length;
     }
-    
+
     public static String traduce_to_Ingles(String p) {
-        int x = buscar(p, II);
-        if (x != -1) {
-            return EI[x];
+        int x1 = buscar(p, II);
+        if (x1 != -1) {
+            return EI[x1];
         } else {
             return "No tenemos la traduccion";
         }
     }
-    
+
     public static String traduce_to_Español(String p) {
-        int x = buscar(p, EE);
-        if (x != -1) {
-            return IE[x];
+        int x1 = buscar(p, EE);
+        if (x1 != -1) {
+            return IE[x1];
         } else {
             return "No tenemos la traduccion";
         }
     }
-    
+
     public static int buscar(String palabra, String m[]) {
         int i = 0;
         while (i < m.length) {
@@ -380,7 +466,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return -1;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -411,7 +497,7 @@ public class Dc extends javax.swing.JFrame {
                 new Dc().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -422,6 +508,7 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
