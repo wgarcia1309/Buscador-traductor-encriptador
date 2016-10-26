@@ -252,85 +252,49 @@ public class Dc extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         x = 0;
-        String a="";
+        String a = "";
         if (!(Bie.isSelected()) && !(Bei.isSelected())) {
             JOptionPane.showMessageDialog(null, "Error seleccione una opcion");
         } else {
             String po = (txt1.getText()).toLowerCase();
-            po = po.replaceAll(" ", "");
-            if (!po.equals("")) {
-                StringTokenizer st = new StringTokenizer(po, ",");
-                String tr = "";
-                String clave;
-                do {
-                  clave = JOptionPane.showInputDialog(null, "Digite la clave");
-                } while (clave.equals("") || clave.equals(null));
-                clave = clave.toLowerCase();
-                
+            if (!po.replaceAll(" ", "").equals("")) {
+                //binary to text
+                if ( ( (po.replaceAll(" ", "").length() )-con_c(po,",") ) % 8 != 0 ) {
+                    JOptionPane.showMessageDialog(this, "Error ingrese la entrada completa");
+                } else {
+                    po=binary_to_text(po);
+                    StringTokenizer st = new StringTokenizer(po, ",");
+                    String tr = "";
+                    String clave;
+                    //error cuando cancelan
+                    do {
+                        clave = JOptionPane.showInputDialog(null, "Digite la clave");
+                    } while (clave.equals("") || clave.equals(null));
+                    clave = clave.toLowerCase();
                     while (st.hasMoreTokens() && !(po.equals(""))) {
                         String p = st.nextToken();
                         if (!(p.equals(""))) {
-                            if (Bie.isSelected() == true) 
-                                a += Desencriptar(p, clave, IE, EE, "i")+",";
-                             else if (Bei.isSelected() == true) 
-                                a += Desencriptar(p, clave, EI, II, "e")+",";
+                            if (Bie.isSelected() == true) {
+                                a += Desencriptar(p, clave, IE, EE, "i") + ",";
+                            } else if (Bei.isSelected() == true) {
+                                a += Desencriptar(p, clave, EI, II, "e") + ",";
+                            }
                         }
                     }
-                    a=a.substring(0, a.length()-1);
-                    if(a.contains("No tenemos la traduccion")) JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
-                    else JOptionPane.showMessageDialog(null, a);
+                    a = a.substring(0, a.length() - 1);
+                    if (a.contains("No tenemos la traduccion")) {
+                        JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
+                    } else {
+                        JOptionPane.showMessageDialog(null, a);
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Error no ingreso nada");
             }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
-    public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
-        int a = (int) 'a';
-        int d=psw.length();
-        for (int i = 0; i < letras.length; i++) {
-            if (i < 14) {
-                letras[i] = (char) (a + i);
-            } else if (i == 14) {
-                letras[i] = 'ñ';
-            } else {
-                letras[i] = (char) (a - 1 + i);
-            }
-        }
-        String palabra = "";
-        char p[] = s.toCharArray();
-        char cl[] = psw.toCharArray();
-        for (int i = 0; i < s.length(); i++) {
-            if (x == d) x = 0;
-            int n = (posletra(p[i]) - posletra(cl[x]));
-            if (n >= 0) {
-                n = n % 27;
-            } else {
-                n = (n + 27) % 27;
-            }
-            palabra = palabra+letras[n];
-            x++;
-        }
-        int place=posicion(palabra,v);
-        if(place!=-1){
-             if (l.equals("e"))return traduce_to_Español(palabra);
-             else if (l.equals("i"))return traduce_to_Ingles(palabra);
-        }
-        return "";
-    }
-
-    public static void deleteEE(String p) {
-        for (int i = buscar(p, EE); i < EE.length - 1; i++) {
-            EE[i] = EE[i + 1];
-            IE[i] = IE[i + 1];
-        }
-        for (int i = buscar(p, EI); i < EI.length - 1; i++) {
-            EI[i] = EI[i + 1];
-            II[i] = II[i + 1];
-        }
-    }
-
     public static void Encriptar(String s) {
-        x=0;
+        x = 0;
         int a = (int) 'a';
         for (int i = 0; i < letras.length; i++) {
             if (i < 14) {
@@ -358,7 +322,9 @@ public class Dc extends javax.swing.JFrame {
             if (f1[i] == ',') {
                 f1[i] = ',';
             } else {
-                if(x==clave.length())x=0;
+                if (x == clave.length()) {
+                    x = 0;
+                }
                 int n = (posletra(f1[i]) + posletra(cl[x])) % 27;
                 f1[i] = letras[n];
                 x++;
@@ -368,7 +334,117 @@ public class Dc extends javax.swing.JFrame {
         for (int i = 0; i < s.length(); i++) {
             lol = lol + f1[i];
         }
-        JOptionPane.showMessageDialog(null, lol);
+        //cifrado a binario (aplicacion)
+        String e = lol;
+        String pala = "", sout;
+        StringTokenizer xd = new StringTokenizer(e, ",");
+        while (xd.hasMoreTokens()) {
+            String w = xd.nextToken();
+            sout = "";
+            for (int i = 0; i < w.length(); i++) {
+                sout += text_to_binary(w.charAt(i));
+            }
+            pala += sout + ",\n";
+        }
+        System.out.println(pala.substring(0, pala.length() - 2));
+        JOptionPane.showMessageDialog(null, pala.substring(0, pala.length() - 2));
+
+    }
+
+    public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
+        int a = (int) 'a';
+        int d = psw.length();
+        for (int i = 0; i < letras.length; i++) {
+            if (i < 14) {
+                letras[i] = (char) (a + i);
+            } else if (i == 14) {
+                letras[i] = 'ñ';
+            } else {
+                letras[i] = (char) (a - 1 + i);
+            }
+        }
+        String palabra = "";
+        char p[] = s.toCharArray();
+        char cl[] = psw.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            if (x == d) {
+                x = 0;
+            }
+            int n = (posletra(p[i]) - posletra(cl[x]));
+            if (n >= 0) {
+                n = n % 27;
+            } else {
+                n = (n + 27) % 27;
+            }
+            palabra = palabra + letras[n];
+            x++;
+        }
+        int place = posicion(palabra, v);
+        if (place != -1) {
+            if (l.equals("e")) {
+                return traduce_to_Español(palabra);
+            } else if (l.equals("i")) {
+                return traduce_to_Ingles(palabra);
+            }
+        }
+        return "";
+    }
+
+    public static int con_c(String a,String b) {
+        a=a.replaceAll(" ", "");
+        int c=0;
+        while (a.contains(b)) {
+            a = a.substring(a.indexOf(b) +1, a.length());
+            c++;
+        }
+        return c;
+    }
+     public static String binary_to_text(String a) {
+        StringTokenizer st = new StringTokenizer(a, ",");
+        String frase = "";
+        while (st.hasMoreTokens()) {
+            String w = st.nextToken();
+            StringTokenizer esp = new StringTokenizer(w, " ");
+            String palabra = "";
+            while (esp.hasMoreTokens()) {
+                String l = esp.nextToken();
+                int num = 0;
+                for (int i = 0; i < 8; i++) {
+                    if (l.charAt(i) == '1') {
+                        num += Math.pow(2, 8 - i - 1);
+                    }
+                }
+                palabra += (char) num;
+            }
+            frase += palabra + ",";
+        }
+        return frase.substring(0,frase.length()-1);
+    }
+    public static String text_to_binary(char a) {
+        int s = (int) a;
+        String binaryin = "";
+        for (int i = 0; i < 8; i++) {
+            binaryin += (s % 2);
+            s = s / 2;
+        }
+        String binary = "";
+        for (int i = 7; i > -1; i--) {
+            binary += binaryin.charAt(i);
+        }
+        return binary + " ";
+    }
+
+   
+
+    public static void deleteEE(String p) {
+        for (int i = buscar(p, EE); i < EE.length - 1; i++) {
+            EE[i] = EE[i + 1];
+            IE[i] = IE[i + 1];
+        }
+        for (int i = buscar(p, EI); i < EI.length - 1; i++) {
+            EI[i] = EI[i + 1];
+            II[i] = II[i + 1];
+        }
     }
 
     public static String igclave(String w, String c) {
