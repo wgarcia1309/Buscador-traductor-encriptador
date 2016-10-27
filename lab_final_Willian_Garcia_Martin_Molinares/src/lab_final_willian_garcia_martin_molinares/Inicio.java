@@ -7,7 +7,6 @@ package lab_final_willian_garcia_martin_molinares;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -19,9 +18,6 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form AÑADIR
      */
     public Inicio() {
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.BusinessBlackSteelSkin");
-        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceCremeTheme");
         initComponents();
         setLocationRelativeTo(null);
     }

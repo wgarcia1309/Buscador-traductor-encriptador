@@ -1,21 +1,17 @@
 package lab_final_willian_garcia_martin_molinares;
 
 import java.util.StringTokenizer;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class Dc extends javax.swing.JFrame {
 
     public Dc() {
         initComponents();
         JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.BusinessBlackSteelSkin");
-        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceCremeTheme");
         setTitle("DICCIONARIO");
         setLocationRelativeTo(null);
         setResizable(false);
@@ -322,9 +318,7 @@ public class Dc extends javax.swing.JFrame {
             if (f1[i] == ',') {
                 f1[i] = ',';
             } else {
-                if (x == clave.length()) {
-                    x = 0;
-                }
+                if (x == clave.length()) x = 0;
                 int n = (posletra(f1[i]) + posletra(cl[x])) % 27;
                 f1[i] = letras[n];
                 x++;
@@ -334,10 +328,11 @@ public class Dc extends javax.swing.JFrame {
         for (int i = 0; i < s.length(); i++) {
             lol = lol + f1[i];
         }
+        System.out.println(lol);
+        lol=our(lol);//cifrado propio
         //cifrado a binario (aplicacion)
-        String e = lol;
         String pala = "", sout;
-        StringTokenizer xd = new StringTokenizer(e, ",");
+        StringTokenizer xd = new StringTokenizer(lol, ",");
         while (xd.hasMoreTokens()) {
             String w = xd.nextToken();
             sout = "";
@@ -348,9 +343,24 @@ public class Dc extends javax.swing.JFrame {
         }
         System.out.println(pala.substring(0, pala.length() - 2));
         JOptionPane.showMessageDialog(null, pala.substring(0, pala.length() - 2));
-
     }
-
+    
+    public static String our(String c) {
+        c = c.replaceAll(" ", "");
+        String nc = "";
+        char sw;
+        if (c.length() % 2 == 0) {
+            for (int i = 0; i < c.length(); i += 2) {
+                nc += c.substring(i + 1, i + 2) + c.substring(i, i + 1) + "";
+            }
+        } else {
+            for (int i = 0; i < c.length() - 1; i += 2) {
+                nc += c.substring(i + 1, i + 2) + c.substring(i, i + 1) + "";
+            }
+            nc += c.substring(c.length() - 1, c.length());
+        }
+        return nc;
+    }
     public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
         int a = (int) 'a';
         int d = psw.length();
@@ -379,6 +389,7 @@ public class Dc extends javax.swing.JFrame {
             palabra = palabra + letras[n];
             x++;
         }
+        palabra=our(palabra);
         int place = posicion(palabra, v);
         if (place != -1) {
             if (l.equals("e")) {
@@ -389,7 +400,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return "";
     }
-
     public static int con_c(String a,String b) {
         a=a.replaceAll(" ", "");
         int c=0;
@@ -399,7 +409,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return c;
     }
-     public static String binary_to_text(String a) {
+    public static String binary_to_text(String a) {
         StringTokenizer st = new StringTokenizer(a, ",");
         String frase = "";
         while (st.hasMoreTokens()) {
@@ -433,9 +443,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return binary + " ";
     }
-
-   
-
     public static void deleteEE(String p) {
         for (int i = buscar(p, EE); i < EE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -446,7 +453,6 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
-
     public static String igclave(String w, String c) {
         int cont = 0;
         int p = c.length();
@@ -463,7 +469,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return c;
     }
-
     public static int posletra(char l) {
         int i = 0;
         while (i < 27 && letras[i] != l) {
@@ -471,7 +476,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return i;
     }
-
     public static void deleteII(String p) {
         for (int i = buscar(p, IE); i < IE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -482,7 +486,6 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
-
     public static void añadirII(String p, String p1) {
         int x1 = posicion(p1, II);
         for (int i = EI.length - 1; i > x1; i--) {
@@ -492,7 +495,6 @@ public class Dc extends javax.swing.JFrame {
         EI[x1] = p;
         II[x1] = p1;
     }
-
     public static void añadirEE(String p, String p1) {
         int x1 = posicion(p, EE);
         for (int i = EE.length - 1; i > x1; i--) {
@@ -502,7 +504,6 @@ public class Dc extends javax.swing.JFrame {
         EE[x1] = p;
         IE[x1] = p1;
     }
-
     public static int posicion(String p, String a[]) {
         int x1 = 0;
         while (x1 < a.length) {
@@ -513,7 +514,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return a.length;
     }
-
     public static String traduce_to_Ingles(String p) {
         int x1 = buscar(p, II);
         if (x1 != -1) {
@@ -522,7 +522,6 @@ public class Dc extends javax.swing.JFrame {
             return "No tenemos la traduccion";
         }
     }
-
     public static String traduce_to_Español(String p) {
         int x1 = buscar(p, EE);
         if (x1 != -1) {
@@ -531,7 +530,6 @@ public class Dc extends javax.swing.JFrame {
             return "No tenemos la traduccion";
         }
     }
-
     public static int buscar(String palabra, String m[]) {
         int i = 0;
         while (i < m.length) {
@@ -542,7 +540,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return -1;
     }
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
