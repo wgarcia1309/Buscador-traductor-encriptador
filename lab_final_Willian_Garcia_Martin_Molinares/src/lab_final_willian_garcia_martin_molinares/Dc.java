@@ -99,7 +99,7 @@ public class Dc extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +121,7 @@ public class Dc extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,14 +131,13 @@ public class Dc extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -149,6 +148,9 @@ public class Dc extends javax.swing.JFrame {
     public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo", "mundo", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static int act = 6;
     public static int x;
+    public static String a = "";
+    public static String prop= "";
+    public static String original = "";
     public static char[] letras = new char[27];
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -201,7 +203,6 @@ public class Dc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El diccionario esta vacio");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (!(Bie.isSelected()) && !(Bei.isSelected())) {
             JOptionPane.showMessageDialog(null, "Error seleccione una opcion");
@@ -245,20 +246,18 @@ public class Dc extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         x = 0;
-        String a = "";
         if (!(Bie.isSelected()) && !(Bei.isSelected())) {
             JOptionPane.showMessageDialog(null, "Error seleccione una opcion");
         } else {
             String po = (txt1.getText()).toLowerCase();
             if (!po.replaceAll(" ", "").equals("")) {
                 //binary to text
-                if ( ( (po.replaceAll(" ", "").length() )-con_c(po,",") ) % 8 != 0 ) {
+                if (((po.replaceAll(" ", "").length()) - con_c(po, ",")) % 8 != 0) {
                     JOptionPane.showMessageDialog(this, "Error ingrese la entrada completa");
                 } else {
-                    po=binary_to_text(po);
+                    po = binary_to_text(po);
                     StringTokenizer st = new StringTokenizer(po, ",");
                     String tr = "";
                     String clave;
@@ -267,21 +266,26 @@ public class Dc extends javax.swing.JFrame {
                         clave = JOptionPane.showInputDialog(null, "Digite la clave");
                     } while (clave.equals("") || clave.equals(null));
                     clave = clave.toLowerCase();
+                    JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n"+po);
+                    original="";
+                    prop="";
                     while (st.hasMoreTokens() && !(po.equals(""))) {
                         String p = st.nextToken();
                         if (!(p.equals(""))) {
+                            String te="";
                             if (Bie.isSelected() == true) {
-                                a += Desencriptar(p, clave, IE, EE, "i") + ",";
+                                te += Desencriptar(p, clave, IE, EE, "i") + ",";
                             } else if (Bei.isSelected() == true) {
-                                a += Desencriptar(p, clave, EI, II, "e") + ",";
+                                te += Desencriptar(p, clave, EI, II, "e") + ",";
                             }
+                            original+=te;
                         }
                     }
-                    a = a.substring(0, a.length() - 1);
-                    if (a.contains("No tenemos la traduccion")) {
+                    if (original.contains("No tenemos la traduccion")) {
                         JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
                     } else {
-                        JOptionPane.showMessageDialog(null, a);
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere:\n"+prop.substring(0,prop.length()-1));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere y\ndel propio es y a su vez al idioma contrario es:\n"+original.substring(0,original.length()-1));
                     }
                 }
             } else {
@@ -311,6 +315,10 @@ public class Dc extends javax.swing.JFrame {
             clave = igclave(s, clave);
         }
         s = s.replaceAll(" ", "");
+        //cifrado propio
+        s = our(s);
+        JOptionPane.showMessageDialog(null, "cifrado propio: \n" + s);
+        //cifrado vigenere
         char f1[], cl[];
         f1 = s.toCharArray();
         cl = clave.toCharArray();
@@ -318,7 +326,9 @@ public class Dc extends javax.swing.JFrame {
             if (f1[i] == ',') {
                 f1[i] = ',';
             } else {
-                if (x == clave.length()) x = 0;
+                if (x == clave.length()) {
+                    x = 0;
+                }
                 int n = (posletra(f1[i]) + posletra(cl[x])) % 27;
                 f1[i] = letras[n];
                 x++;
@@ -328,8 +338,7 @@ public class Dc extends javax.swing.JFrame {
         for (int i = 0; i < s.length(); i++) {
             lol = lol + f1[i];
         }
-        System.out.println(lol);
-        lol=our(lol);//cifrado propio
+        JOptionPane.showMessageDialog(null, "Propio+vigenere: \n" + lol);
         //cifrado a binario (aplicacion)
         String pala = "", sout;
         StringTokenizer xd = new StringTokenizer(lol, ",");
@@ -342,24 +351,28 @@ public class Dc extends javax.swing.JFrame {
             pala += sout + ",\n";
         }
         System.out.println(pala.substring(0, pala.length() - 2));
-        JOptionPane.showMessageDialog(null, pala.substring(0, pala.length() - 2));
+        JOptionPane.showMessageDialog(null, "(propio+vigenere) a binario:\n" + pala.substring(0, pala.length() - 2));
     }
-    
     public static String our(String c) {
         c = c.replaceAll(" ", "");
-        String nc = "";
         char sw;
-        if (c.length() % 2 == 0) {
-            for (int i = 0; i < c.length(); i += 2) {
-                nc += c.substring(i + 1, i + 2) + c.substring(i, i + 1) + "";
+        StringTokenizer st = new StringTokenizer(c, ",");
+        String nc = "";
+        while (st.hasMoreTokens()) {
+            String w = st.nextToken();
+            if (w.length() % 2 == 0) {
+                for (int i = 0; i < w.length(); i += 2) {
+                    nc += w.substring(i + 1, i + 2) + c.substring(i, i + 1) + "";
+                }
+            } else {
+                for (int i = 0; i < w.length() - 1; i += 2) {
+                    nc += w.substring(i + 1, i + 2) + w.substring(i, i + 1) + "";
+                }
+                nc += w.substring(w.length() - 1, w.length());
             }
-        } else {
-            for (int i = 0; i < c.length() - 1; i += 2) {
-                nc += c.substring(i + 1, i + 2) + c.substring(i, i + 1) + "";
-            }
-            nc += c.substring(c.length() - 1, c.length());
+            nc+=",";
         }
-        return nc;
+        return nc.substring(0,nc.length()-1);
     }
     public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
         int a = (int) 'a';
@@ -389,6 +402,7 @@ public class Dc extends javax.swing.JFrame {
             palabra = palabra + letras[n];
             x++;
         }
+        prop+=palabra+",";
         palabra=our(palabra);
         int place = posicion(palabra, v);
         if (place != -1) {
@@ -400,15 +414,16 @@ public class Dc extends javax.swing.JFrame {
         }
         return "";
     }
-    public static int con_c(String a,String b) {
-        a=a.replaceAll(" ", "");
-        int c=0;
+    public static int con_c(String a, String b) {
+        a = a.replaceAll(" ", "");
+        int c = 0;
         while (a.contains(b)) {
-            a = a.substring(a.indexOf(b) +1, a.length());
+            a = a.substring(a.indexOf(b) + 1, a.length());
             c++;
         }
         return c;
     }
+
     public static String binary_to_text(String a) {
         StringTokenizer st = new StringTokenizer(a, ",");
         String frase = "";
@@ -428,8 +443,9 @@ public class Dc extends javax.swing.JFrame {
             }
             frase += palabra + ",";
         }
-        return frase.substring(0,frase.length()-1);
+        return frase.substring(0, frase.length() - 1);
     }
+
     public static String text_to_binary(char a) {
         int s = (int) a;
         String binaryin = "";
@@ -443,6 +459,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return binary + " ";
     }
+
     public static void deleteEE(String p) {
         for (int i = buscar(p, EE); i < EE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -453,6 +470,7 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
+
     public static String igclave(String w, String c) {
         int cont = 0;
         int p = c.length();
@@ -469,6 +487,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return c;
     }
+
     public static int posletra(char l) {
         int i = 0;
         while (i < 27 && letras[i] != l) {
@@ -476,6 +495,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return i;
     }
+
     public static void deleteII(String p) {
         for (int i = buscar(p, IE); i < IE.length - 1; i++) {
             EE[i] = EE[i + 1];
@@ -486,6 +506,7 @@ public class Dc extends javax.swing.JFrame {
             II[i] = II[i + 1];
         }
     }
+
     public static void añadirII(String p, String p1) {
         int x1 = posicion(p1, II);
         for (int i = EI.length - 1; i > x1; i--) {
@@ -495,6 +516,7 @@ public class Dc extends javax.swing.JFrame {
         EI[x1] = p;
         II[x1] = p1;
     }
+
     public static void añadirEE(String p, String p1) {
         int x1 = posicion(p, EE);
         for (int i = EE.length - 1; i > x1; i--) {
@@ -504,6 +526,7 @@ public class Dc extends javax.swing.JFrame {
         EE[x1] = p;
         IE[x1] = p1;
     }
+
     public static int posicion(String p, String a[]) {
         int x1 = 0;
         while (x1 < a.length) {
@@ -514,6 +537,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return a.length;
     }
+
     public static String traduce_to_Ingles(String p) {
         int x1 = buscar(p, II);
         if (x1 != -1) {
@@ -522,6 +546,7 @@ public class Dc extends javax.swing.JFrame {
             return "No tenemos la traduccion";
         }
     }
+
     public static String traduce_to_Español(String p) {
         int x1 = buscar(p, EE);
         if (x1 != -1) {
@@ -530,6 +555,7 @@ public class Dc extends javax.swing.JFrame {
             return "No tenemos la traduccion";
         }
     }
+
     public static int buscar(String palabra, String m[]) {
         int i = 0;
         while (i < m.length) {
@@ -540,6 +566,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return -1;
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -572,7 +599,6 @@ public class Dc extends javax.swing.JFrame {
         });
 
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Bei;
     private javax.swing.JRadioButton Bie;
@@ -585,5 +611,4 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
-
 }
