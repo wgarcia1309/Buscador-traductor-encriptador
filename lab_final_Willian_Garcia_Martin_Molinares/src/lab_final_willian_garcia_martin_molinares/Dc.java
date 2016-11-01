@@ -149,7 +149,7 @@ public class Dc extends javax.swing.JFrame {
     public static int act = 6;
     public static int x;
     public static String a = "";
-    public static String prop= "";
+    public static String prop = "";
     public static String original = "";
     public static char[] letras = new char[32];
 
@@ -253,11 +253,12 @@ public class Dc extends javax.swing.JFrame {
         } else {
             String po = (txt1.getText()).toLowerCase();
             if (!po.replaceAll(" ", "").equals("")) {
-                //binary to text
                 if (((po.replaceAll(" ", "").length()) - con_c(po, ",")) % 8 != 0) {
                     JOptionPane.showMessageDialog(this, "Error ingrese la entrada completa");
                 } else {
+                    //binary to text
                     po = binary_to_text(po);
+                    System.out.println(po);
                     StringTokenizer st = new StringTokenizer(po, ",");
                     String tr = "";
                     String clave;
@@ -266,26 +267,26 @@ public class Dc extends javax.swing.JFrame {
                         clave = JOptionPane.showInputDialog(null, "Digite la clave");
                     } while (clave.equals("") || clave.equals(null));
                     clave = clave.toLowerCase();
-                    original="";
-                    prop="";
+                    original = "";
+                    prop = "";
                     while (st.hasMoreTokens() && !(po.equals(""))) {
                         String p = st.nextToken();
                         if (!(p.equals(""))) {
-                            String te="";
+                            String te = "";
                             if (Bie.isSelected() == true) {
                                 te += Desencriptar(p, clave, IE, EE, "i") + ",";
                             } else if (Bei.isSelected() == true) {
                                 te += Desencriptar(p, clave, EI, II, "e") + ",";
                             }
-                            original+=te;
+                            System.out.println(original);
                         }
                     }
                     if (original.contains("No tenemos la traduccion")) {
                         JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n"+po);
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere:\n"+prop.substring(0,prop.length()-1));
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere y\ndel propio es y a su vez al idioma contrario es:\n"+original.substring(0,original.length()-1));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n" + po);
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere:\n" + prop.substring(0, prop.length() - 1));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere y\ndel propio es y a su vez al idioma contrario es:\n" + our(prop.substring(0, prop.length() - 1)));
                     }
                 }
             } else {
@@ -305,11 +306,11 @@ public class Dc extends javax.swing.JFrame {
                 letras[i] = (char) (a - 1 + i);
             }
         }
-       letras[27] ='á';
-       letras[28] ='é';
-       letras[29] ='í';
-       letras[30] ='ó';
-       letras[31] ='ú';
+        letras[27] = 'á';
+        letras[28] = 'é';
+        letras[29] = 'í';
+        letras[30] = 'ó';
+        letras[31] = 'ú';
         String clave = "";
         do {
             clave = JOptionPane.showInputDialog(null, "Digite la clave");
@@ -358,6 +359,7 @@ public class Dc extends javax.swing.JFrame {
         System.out.println(pala.substring(0, pala.length() - 2));
         JOptionPane.showMessageDialog(null, "(propio+vigenere) a binario:\n" + pala.substring(0, pala.length() - 2));
     }
+
     public static String our(String c) {
         c = c.replaceAll(" ", "");
         char sw;
@@ -375,13 +377,14 @@ public class Dc extends javax.swing.JFrame {
                 }
                 nc += w.substring(w.length() - 1, w.length());
             }
-            nc+=",";
+            nc += ",";
         }
-        return nc.substring(0,nc.length()-1);
+        return nc.substring(0, nc.length() - 1);
     }
+
     public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
         int d = psw.length();
-             x = 0;
+        x = 0;
         int a = (int) 'a';
         for (int i = 0; i < 26; i++) {
             if (i < 14) {
@@ -392,29 +395,31 @@ public class Dc extends javax.swing.JFrame {
                 letras[i] = (char) (a - 1 + i);
             }
         }
-       letras[27] ='á';
-       letras[28] ='é';
-       letras[29] ='í';
-       letras[30] ='ó';
-       letras[31] ='ú';
+        letras[27] = 'á';
+        letras[28] = 'é';
+        letras[29] = 'í';
+        letras[30] = 'ó';
+        letras[31] = 'ú';
         String palabra = "";
         char p[] = s.toCharArray();
         char cl[] = psw.toCharArray();
         for (int i = 0; i < s.length(); i++) {
-            if (x == d) {
-                x = 0;
+            if (p[i] != ',') {
+                if (x == d) {
+                    x = 0;
+                }
+                int n = (posletra(p[i]) - posletra(cl[x]));
+                if (n >= 0) {
+                    n = n % 32;
+                } else {
+                    n = (n + 32) % 32;
+                }
+                palabra = palabra + letras[n];
+                x++;
             }
-            int n = (posletra(p[i]) - posletra(cl[x]));
-            if (n >= 0) {
-                n = n % 32;
-            } else {
-                n = (n + 32) % 32;
-            }
-            palabra = palabra + letras[n];
-            x++;
         }
-        prop+=palabra+",";
-        palabra=our(palabra);
+        prop += palabra + ",";
+        palabra = our(palabra);
         int place = posicion(palabra, v);
         if (place != -1) {
             if (l.equals("e")) {
@@ -425,6 +430,7 @@ public class Dc extends javax.swing.JFrame {
         }
         return "";
     }
+
     public static int con_c(String a, String b) {
         a = a.replaceAll(" ", "");
         int c = 0;
@@ -501,7 +507,7 @@ public class Dc extends javax.swing.JFrame {
 
     public static int posletra(char l) {
         int i = 0;
-        while (i < 27 && letras[i] != l) {
+        while (i < 32 && letras[i] != l) {
             i++;
         }
         return i;
@@ -623,4 +629,3 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
 }
-
