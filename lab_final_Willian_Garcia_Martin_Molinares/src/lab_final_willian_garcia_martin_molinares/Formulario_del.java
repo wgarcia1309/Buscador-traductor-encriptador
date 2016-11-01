@@ -122,6 +122,7 @@ public class Formulario_del extends javax.swing.JFrame {
                     deleteII(del);                    
                 }
                 act--;
+                JOptionPane.showMessageDialog(this, "Palabra eliminada");
                 Dc v1 = new Dc();
                 v1.setVisible(true);
                 this.setVisible(false);

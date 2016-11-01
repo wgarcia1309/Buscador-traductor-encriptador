@@ -142,7 +142,7 @@ public class Dc extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static String[] EE = {"cielo", "hola", "mundo", "rojo", "telefono", "zapato", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    public static String[] EE = {"cielo", "hola", "mundo", "rojo", "teléfono", "zapato", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static String[] IE = {"sky", "hello", "world", "red", "phone", "shoe", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static String[] II = {"hello", "phone", "red", "shoe", "sky", "world", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     public static String[] EI = {"hola", "telefono", "rojo", "zapato", "cielo", "mundo", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
@@ -151,7 +151,7 @@ public class Dc extends javax.swing.JFrame {
     public static String a = "";
     public static String prop= "";
     public static String original = "";
-    public static char[] letras = new char[27];
+    public static char[] letras = new char[32];
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!(Bie.isSelected()) && !(Bei.isSelected())) {
@@ -266,7 +266,6 @@ public class Dc extends javax.swing.JFrame {
                         clave = JOptionPane.showInputDialog(null, "Digite la clave");
                     } while (clave.equals("") || clave.equals(null));
                     clave = clave.toLowerCase();
-                    JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n"+po);
                     original="";
                     prop="";
                     while (st.hasMoreTokens() && !(po.equals(""))) {
@@ -284,6 +283,7 @@ public class Dc extends javax.swing.JFrame {
                     if (original.contains("No tenemos la traduccion")) {
                         JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
                     } else {
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n"+po);
                         JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere:\n"+prop.substring(0,prop.length()-1));
                         JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere y\ndel propio es y a su vez al idioma contrario es:\n"+original.substring(0,original.length()-1));
                     }
@@ -296,7 +296,7 @@ public class Dc extends javax.swing.JFrame {
     public static void Encriptar(String s) {
         x = 0;
         int a = (int) 'a';
-        for (int i = 0; i < letras.length; i++) {
+        for (int i = 0; i < 26; i++) {
             if (i < 14) {
                 letras[i] = (char) (a + i);
             } else if (i == 14) {
@@ -305,6 +305,11 @@ public class Dc extends javax.swing.JFrame {
                 letras[i] = (char) (a - 1 + i);
             }
         }
+       letras[27] ='á';
+       letras[28] ='é';
+       letras[29] ='í';
+       letras[30] ='ó';
+       letras[31] ='ú';
         String clave = "";
         do {
             clave = JOptionPane.showInputDialog(null, "Digite la clave");
@@ -329,7 +334,7 @@ public class Dc extends javax.swing.JFrame {
                 if (x == clave.length()) {
                     x = 0;
                 }
-                int n = (posletra(f1[i]) + posletra(cl[x])) % 27;
+                int n = (posletra(f1[i]) + posletra(cl[x])) % 32;
                 f1[i] = letras[n];
                 x++;
             }
@@ -375,9 +380,10 @@ public class Dc extends javax.swing.JFrame {
         return nc.substring(0,nc.length()-1);
     }
     public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
-        int a = (int) 'a';
         int d = psw.length();
-        for (int i = 0; i < letras.length; i++) {
+             x = 0;
+        int a = (int) 'a';
+        for (int i = 0; i < 26; i++) {
             if (i < 14) {
                 letras[i] = (char) (a + i);
             } else if (i == 14) {
@@ -386,6 +392,11 @@ public class Dc extends javax.swing.JFrame {
                 letras[i] = (char) (a - 1 + i);
             }
         }
+       letras[27] ='á';
+       letras[28] ='é';
+       letras[29] ='í';
+       letras[30] ='ó';
+       letras[31] ='ú';
         String palabra = "";
         char p[] = s.toCharArray();
         char cl[] = psw.toCharArray();
@@ -395,9 +406,9 @@ public class Dc extends javax.swing.JFrame {
             }
             int n = (posletra(p[i]) - posletra(cl[x]));
             if (n >= 0) {
-                n = n % 27;
+                n = n % 32;
             } else {
-                n = (n + 27) % 27;
+                n = (n + 32) % 32;
             }
             palabra = palabra + letras[n];
             x++;
@@ -612,3 +623,4 @@ public class Dc extends javax.swing.JFrame {
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
 }
+
