@@ -328,7 +328,7 @@ public class Dc extends javax.swing.JFrame {
                 if (x == clave.length()) {
                     x = 0;
                 }
-                int n = (posletra(f1[i]) + posletra(cl[x])) % 32;
+                int n = (posletra(f1[i],0) + posletra(cl[x],0)) % 32;
                 f1[i] = letras[n];
                 x++;
             }
@@ -401,7 +401,7 @@ public class Dc extends javax.swing.JFrame {
                 if (x == d) {
                     x = 0;
                 }
-                int n = (posletra(p[i]) - posletra(cl[x]));
+                int n = (posletra(p[i],0) - posletra(cl[x],0));
                 if (n >= 0) {
                     n = n % 32;
                 } else {
@@ -471,11 +471,11 @@ public class Dc extends javax.swing.JFrame {
     }
 
     public static void deleteEE(String p) {
-        for (int i = buscar(p, EE); i < EE.length - 1; i++) {
+        for (int i = buscar(p, EE,0); i < EE.length - 1; i++) {
             EE[i] = EE[i + 1];
             IE[i] = IE[i + 1];
         }
-        for (int i = buscar(p, EI); i < EI.length - 1; i++) {
+        for (int i = buscar(p, EI,0); i < EI.length - 1; i++) {
             EI[i] = EI[i + 1];
             II[i] = II[i + 1];
         }
@@ -497,21 +497,27 @@ public class Dc extends javax.swing.JFrame {
         }
         return c;
     }
-
-    public static int posletra(char l) {
+/*public static int posletra(char l) {
         int i = 0;
         while (i < 32 && letras[i] != l) {
             i++;
         }
         return i;
+    }*/
+    public static int posletra(char l,int i) {
+        
+        if(i < 32 && letras[i] != l) {
+            return posletra(l, i+1);
+        }
+        return i;       
     }
 
     public static void deleteII(String p) {
-        for (int i = buscar(p, IE); i < IE.length - 1; i++) {
+        for (int i = buscar(p, IE,0); i < IE.length - 1; i++) {
             EE[i] = EE[i + 1];
             IE[i] = IE[i + 1];
         }
-        for (int i = buscar(p, II); i < II.length - 1; i++) {
+        for (int i = buscar(p, II,0); i < II.length - 1; i++) {
             EI[i] = EI[i + 1];
             II[i] = II[i + 1];
         }
@@ -549,7 +555,7 @@ public class Dc extends javax.swing.JFrame {
     }
 
     public static String traduce_to_Ingles(String p) {
-        int x1 = buscar(p, II);
+        int x1 = buscar(p, II,0);
         if (x1 != -1) {
             return EI[x1];
         } else {
@@ -558,7 +564,7 @@ public class Dc extends javax.swing.JFrame {
     }
 
     public static String traduce_to_Español(String p) {
-        int x1 = buscar(p, EE);
+        int x1 = buscar(p, EE,0);
         if (x1 != -1) {
             return IE[x1];
         } else {
@@ -566,13 +572,13 @@ public class Dc extends javax.swing.JFrame {
         }
     }
 
-    public static int buscar(String palabra, String m[]) {
-        int i = 0;
-        while (i < m.length) {
+    public static int buscar(String palabra, String m[], int i) {
+        
+        if(i < m.length) {
             if (palabra.equals(m[i])) {
                 return i;
             }
-            i++;
+            return buscar(palabra, m, i+1);
         }
         return -1;
     }
