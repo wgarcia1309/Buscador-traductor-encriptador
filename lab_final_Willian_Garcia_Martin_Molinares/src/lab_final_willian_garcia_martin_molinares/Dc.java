@@ -164,23 +164,19 @@ public class Dc extends javax.swing.JFrame {
             while (st.hasMoreTokens() && !(po.equals(""))) {
                 String p = st.nextToken();
                 if (!(p.equals(""))) {
-                    if (Bie.isSelected() == true) {
-                        tr = tr + traduce_to_Ingles(p) + ",";
-                    } else if (Bei.isSelected() == true) {
-                        tr = tr + traduce_to_Español(p) + ",";
-                    }
+                    if (Bie.isSelected() == true) tr = tr + traduce_to_Ingles(p) + ",";
+                    else if (Bei.isSelected() == true) tr = tr + traduce_to_Español(p) + ",";
                 }
             }
             po = (txt1.getText()).toLowerCase();
             po = po.replaceAll(" ", "");
             StringTokenizer vr = new StringTokenizer(po, ",");
-            if (po.equals("")) {
+            if (po.equals(""))
                 JOptionPane.showMessageDialog(null, "No ha ingresado nada");
-            } else if (vr.countTokens() > 4) {
+            else if (vr.countTokens() > 4)
                 JOptionPane.showMessageDialog(null, "Excedio el numero de palabras");
-            } else if (vr.countTokens() <= 4 && !(po.equals(""))) {
+            else if (vr.countTokens() <= 4 && !(po.equals("")))
                 JOptionPane.showMessageDialog(null, tr.substring(0, tr.length() - 1));
-            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -189,9 +185,7 @@ public class Dc extends javax.swing.JFrame {
             Formulario_add v3 = new Formulario_add();
             v3.setVisible(true);
             this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Error Se ha alcanzado el limite maximo");
-        }
+        } else JOptionPane.showMessageDialog(this, "Error Se ha alcanzado el limite maximo");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -199,9 +193,8 @@ public class Dc extends javax.swing.JFrame {
             Formulario_del v4 = new Formulario_del();
             v4.setVisible(true);
             this.setVisible(false);
-        } else {
+        } else
             JOptionPane.showMessageDialog(this, "El diccionario esta vacio");
-        }
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (!(Bie.isSelected()) && !(Bei.isSelected())) {
