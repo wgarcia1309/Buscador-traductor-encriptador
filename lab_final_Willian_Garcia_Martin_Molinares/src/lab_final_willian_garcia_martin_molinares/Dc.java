@@ -262,24 +262,24 @@ public class Dc extends javax.swing.JFrame {
                     clave = clave.toLowerCase();
                     original = "";
                     prop = "";
-                    while (st.hasMoreTokens() && !(po.equals(""))) {
+                    String te = "";
+                    while (st.hasMoreTokens() && !(po.equals("")) && !te.contains("No tenemos la traduccion")) {
                         String p = st.nextToken();
                         if (!(p.equals(""))) {
-                            String te = "";
                             if (Bie.isSelected() == true) {
-                                te += Desencriptar(p, clave, IE, EE, "i") + ",";
+                                te+= Desencriptar(p, clave, IE, EE, "i") + ",";
                             } else if (Bei.isSelected() == true) {
-                                te += Desencriptar(p, clave, EI, II, "e") + ",";
+                                te+= Desencriptar(p, clave, EI, II, "e") + ",";
                             }
-                            System.out.println(original);
                         }
                     }
-                    if (original.contains("No tenemos la traduccion")) {
+                    if (te.contains("No tenemos la traduccion")) {
                         JOptionPane.showMessageDialog(null, "Error no todas las palabras tienen traduccion");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario:\n" + po);
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere:\n" + prop.substring(0, prop.length() - 1));
-                        JOptionPane.showMessageDialog(null, "Mensaje traducido del binario y del vigenere y\ndel propio es y a su vez al idioma contrario es:\n" + our(prop.substring(0, prop.length() - 1)));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido sin binario:\n" + po);
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido sin binario y sin vigenere:\n" + prop.substring(0, prop.length() - 1));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido sin binario,sin vigenere y\nsin cifrado propio es:\n" + our(prop.substring(0, prop.length() - 1)));
+                        JOptionPane.showMessageDialog(null, "Mensaje traducido sin binario,sin vigenere,\nsin cifrado propio es y traducido a su vez al idioma contrario es:\n" + te.substring(0,te.length()-1));
                     }
                 }
             } else {
@@ -573,7 +573,6 @@ public class Dc extends javax.swing.JFrame {
     }
 
     public static int buscar(String palabra, String m[], int i) {
-        
         if(i < m.length) {
             if (palabra.equals(m[i])) {
                 return i;
