@@ -115,7 +115,7 @@ public class Formulario_del extends javax.swing.JFrame {
         } else {
             String del;
             del = jTextField1.getText();
-            if (buscar(del, EE) != -1  || (buscar(del, II))!=-1) { 
+            if (buscar(del, EE,0) != -1  || (buscar(del, II,0))!=-1) { 
                if (EBE.isSelected()) {
                     deleteEE(del);
                 } else {
