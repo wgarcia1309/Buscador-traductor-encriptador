@@ -11,6 +11,7 @@ public class Dc extends javax.swing.JFrame {
 
     public Dc() {
         initComponents();
+        
         JFrame.setDefaultLookAndFeelDecorated(true);
         setTitle("DICCIONARIO");
         setLocationRelativeTo(null);

@@ -27,6 +27,7 @@ public class Formulario_add extends javax.swing.JFrame {
      */
     public Formulario_add() {
         initComponents();
+        
         setLocationRelativeTo(null);
     }
 
