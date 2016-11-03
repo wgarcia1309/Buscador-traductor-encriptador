@@ -5,7 +5,6 @@
  */
 package lab_final_willian_garcia_martin_molinares;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
