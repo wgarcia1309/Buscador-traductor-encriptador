@@ -4,12 +4,8 @@
  * and open the template in the editor.
  */
 package lab_final_willian_garcia_martin_molinares;
-
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import static lab_final_willian_garcia_martin_molinares.Dc.EE;
-import static lab_final_willian_garcia_martin_molinares.Dc.EI;
-import static lab_final_willian_garcia_martin_molinares.Dc.IE;
 import static lab_final_willian_garcia_martin_molinares.Dc.II;
 import static lab_final_willian_garcia_martin_molinares.Dc.act;
 import static lab_final_willian_garcia_martin_molinares.Dc.buscar;

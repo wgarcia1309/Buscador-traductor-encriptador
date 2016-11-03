@@ -2,10 +2,7 @@ package lab_final_willian_garcia_martin_molinares;
 
 import java.util.StringTokenizer;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class Dc extends javax.swing.JFrame {
 
