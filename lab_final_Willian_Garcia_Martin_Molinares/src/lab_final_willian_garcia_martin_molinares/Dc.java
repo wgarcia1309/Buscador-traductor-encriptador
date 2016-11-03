@@ -495,13 +495,6 @@ public class Dc extends javax.swing.JFrame {
         }
         return c;
     }
-/*public static int posletra(char l) {
-        int i = 0;
-        while (i < 32 && letras[i] != l) {
-            i++;
-        }
-        return i;
-    }*/
     public static int posletra(char l,int i) {
         
         if(i < 32 && letras[i] != l) {
