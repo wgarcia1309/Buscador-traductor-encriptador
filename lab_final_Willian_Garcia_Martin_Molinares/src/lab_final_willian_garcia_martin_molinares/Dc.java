@@ -265,9 +265,9 @@ public class Dc extends javax.swing.JFrame {
                         String p = st.nextToken();
                         if (!(p.equals(""))) {
                             if (Bie.isSelected() == true) {
-                                te+= Desencriptar(p, clave, IE, EE, "i") + ",";
+                                te+= Desencriptar(p, clave, IE, "i") + ",";
                             } else if (Bei.isSelected() == true) {
-                                te+= Desencriptar(p, clave, EI, II, "e") + ",";
+                                te+= Desencriptar(p, clave, EI, "e") + ",";
                             }
                         }
                     }
@@ -373,7 +373,7 @@ public class Dc extends javax.swing.JFrame {
         return nc.substring(0, nc.length() - 1);
     }
 
-    public static String Desencriptar(String s, String psw, String v[], String v2[], String l) {
+    public static String Desencriptar(String s, String psw, String v[], String l) {
         int d = psw.length();
         x = 0;
         int a = (int) 'a';
