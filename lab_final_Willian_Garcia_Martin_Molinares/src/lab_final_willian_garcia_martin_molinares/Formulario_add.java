@@ -8,6 +8,7 @@ package lab_final_willian_garcia_martin_molinares;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 import static lab_final_willian_garcia_martin_molinares.Dc.EE;
+import static lab_final_willian_garcia_martin_molinares.Dc.II;
 import static lab_final_willian_garcia_martin_molinares.Dc.act;
 import static lab_final_willian_garcia_martin_molinares.Dc.añadirEE;
 import static lab_final_willian_garcia_martin_molinares.Dc.añadirII;
@@ -116,7 +117,7 @@ public static String p1, p2;
         //Expesiones regulares
         
         if (vr1.countTokens() == 1 && vr2.countTokens() == 1 && !(p1.contains("1")) && !(p1.contains("2"))&& !(p1.contains("3")) && !(p1.contains("4")) && !(p1.contains("5")) && !(p1.contains("5")) && !(p1.contains("5")) && !(p1.contains("6"))&& !(p1.contains("7")) && !(p1.contains("8")) && !(p1.contains("9")) && !(p1.contains("0")) && !(p2.contains("1")) &&  !(p2.contains("2")) && !(p2.contains("3")) && !(p2.contains("4")) && !(p2.contains("5")) && !(p2.contains("6")) && !(p2.contains("7")) && !(p2.contains("8")) && !(p2.contains("9")) && !(p2.contains("0"))) {    
-            if (buscar(p1, EE,0) == -1) {
+            if ((buscar(p1, EE,0) == -1) && (buscar(p2, II,0) == -1)){
                añadirEE(p1, p2);
                añadirII(p1, p2);
                JOptionPane.showMessageDialog(null, "Palabra añadida al diccionario");
